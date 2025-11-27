@@ -1,0 +1,283 @@
+% !TEX program = xelatex
+\documentclass[12pt,compress]{beamer}
+\usetheme{Madrid}
+\usefonttheme{professionalfonts}
+\setcounter{page}{2} 
+
+\usepackage{pdfpages}
+\usepackage{float}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{russian}
+\setmainfont{PT Serif} % основной текст (русский)
+\setsansfont{Montserrat} % заголовки (латиница и цифры)
+
+\newfontfamily\cyrillicfonttt{Courier New} % Установить шрифт для моноширинного текста
+
+\definecolor{myLilac}{RGB}{214,214,238}
+\setbeamercolor{palette tertiary}{fg=myLilac,bg=blue!100!black} %цвета для tertiary-палитры (обычно отвечает за цвет левого верхнего и нижнего блоков навигации на слайде). Текст (fg — foreground) будет белым, фон (bg) будет насыщенно-синим.
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{block title}{bg=myLilac, fg=black}
+\setbeamercolor{alerted text}{fg=red} % Красный текст для alertblock
+\setbeamercolor{example text}{fg=green} % Зеленый текст для exampleblock
+\setbeamercolor{alertblock title}{bg=red, fg=white} % Заголовок alertblock
+\setbeamercolor{exampleblock title}{bg=green, fg=white} % Заголовок exampleblock
+
+\title[Адаптивные подходы]{\sffamily Адаптивные подходы к \\ оптимизации цены подшипниковой продукции}
+\subtitle{\sffamily Выпускная работа}
+\author{Динара Сабирова}
+\date{\normalsize 29 ноября 2025 г.}
+
+\begin{document}
+		\begin{frame}[plain]
+		\titlepage
+	\end{frame}
+	
+	\AtBeginSection[]
+{
+	\begin{frame}[plain]
+		\frametitle{Оглавление}
+		\Large
+		\tableofcontents[currentsection]
+	\end{frame}
+}
+
+	% Слайд с общим оглавлением
+	\section{Описание цели и задачи проекта}
+	
+\begin{frame}[plain]
+	\begin{block}{Цель}
+		Автоматизированное установление цен  на подшипниковую продукцию.
+	\end{block}
+	
+	\begin{block}{Гипотеза}
+		Внедрение модели машинного обучения в процесс ценообразования позволит повысить валовую прибыль по высоколиквидным позициям на 5 - 15\% , за счет ускоренного процесса установки цены и ее дальнейшей оптимизации. 
+	\end{block}
+	
+	\begin{block}{Задача}
+		Разработка и внедрение модели для автоматизации процесса ценообразования на высоколиквидные товары в режиме реального времени. 
+	\end{block}
+\end{frame}
+	
+\section{AS IS}
+
+\begin{frame}[plain]
+	\frametitle{Из чего формируется цена?}
+	\begin{figure}
+		\includegraphics[width=\linewidth]{Составляющие цены}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Формирование цены}
+	
+	\begin{block}{Модель расчёта цены}
+		Цена на подшипниковую продукцию формируется из перечня факторов влияющих на цену:
+		\[
+		\text{Price} \sim (\text{T}; \text{I}; \text{D}; \text{ER}; \text{C}; \text{M})
+		\]
+	\end{block}
+	
+	\begin{itemize}
+		\item \textbf{Transport} — расходы на доставку и логистику;
+		\item \textbf{Insurance} — страхование поставки;
+		\item \textbf{Duties} — таможенные пошлины;
+		\item \textbf{Exchange Rates} — валютные колебания и риски;
+		\item \textbf{Competitors} — цены конкурентов на аналогичную продукцию;
+		\item \textbf{Markup} — фиксированная наценка компании.
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}{Детали процесса}
+	\begin{itemize}
+		\item Источники данных
+		\begin{itemize}
+			\item Внутренние данные о продажах
+			\item Информация о конкурентах 
+			\item Рыночные тренды и спрос на продукцию
+		\end{itemize}
+		\item  Методы анализа
+		\begin{itemize}
+			\item Статистический анализ продаж
+			\item Сравнительный анализ с конкурентами
+		\end{itemize}				
+		\item Инструменты аналитики
+		\begin{itemize}
+			\item Excel
+		\end{itemize}				
+		\item Процессы принятия решений
+		\begin{itemize}
+			\item Ручное внесение изменений в цене (В среднем 3000 позиций, циклично обновляются в течении 15 дней,  150 позиций в день). 
+		\end{itemize}											
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+	\frametitle{Участники процесса}
+	\begin{figure}
+		\includegraphics[width=\linewidth]{Участники процесса}
+	\end{figure}
+\end{frame}
+
+\section{TO BE}
+
+\begin{frame}[plain]
+	\frametitle{Этапы}
+	\begin{columns}[c] 
+		
+		\column{\textwidth}{
+			\begin{itemize}
+				\item Сбор данных
+				\item Предварительная обработка данных
+				\item Анализ данных и EDA (Exploratory Data Analysis)
+				\item Разработка ML моделей установления цены
+				\item Валидация и тестирование моделей
+				\item Выбор финального пайплайна
+			\end{itemize}
+		}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[plain]
+	\frametitle{Основные принципы процесса}
+	\begin{figure}
+		\includegraphics[width=\linewidth]{tobe}
+	\end{figure}
+\end{frame}
+
+
+\section{Методология работы}
+
+\begin{frame}[plain]
+	\frametitle{Описание данных}
+	\begin{itemize}
+		\item Датасет:
+		\begin{itemize}
+			\item 9 346 строк, 40+ признаков. Источник — исторические продажи подшипниковой продукции и внешние прайс-листы конкурентов за период 03.06.2024 - 30.05.2025.
+		\end{itemize}
+		\item  Основной таргет:
+		\begin{itemize}
+			\item Price — фактическая цена реализации за единицу продукции.
+		\end{itemize}				
+		\item Типы признаков:
+		\begin{itemize}
+			\item непрерывные: вес, количество в контракте, себестоимость, курс валюты, наценка;
+			\item категориальные: тип подшипника, производитель, страна, клиент.
+		\end{itemize}				 
+		\end{itemize}											
+\end{frame}
+
+\begin{frame}[plain]
+	\frametitle{EDA: Распределение таргета}
+	\begin{figure}
+		\includegraphics[width=\linewidth]{Распределение таргета}
+	\end{figure}
+			\begin{itemize}
+		\item Вывод: Большинство цен сконцентрированы в диапазоне до 30 000 ₽, распределение имеет длинный правый хвост, что говорит о наличии выбросов в виде более дорогостоящих позиций. Для наглядности выведен график с логарифмированным таргетом.
+	\end{itemize}	
+\end{frame}
+
+\begin{frame}[plain]
+	\frametitle{EDA: Корреляционная матрица}
+	\begin{figure}
+		\includegraphics[width=\linewidth]{Корреляционная матрица}
+		\end{figure}
+	\end{frame}
+	
+\begin{frame}[plain]
+	\frametitle{Вывод}
+	\begin{itemize}
+		\item Цена по FOB в долларах ↔ Цена\_pricek  = 0.49. Отражает рыночную концентрацию на прибыльных сегментах.
+		\item Количество\_pricezpu ↔ Количество\_pricek  = 0.14. Это отражает разную стратегию управления ассортиментом —  ЗПУ делает ставку на стабильные модели, а рынок более динамичен.
+		\item Цена\_pricezpu ↔ Количество\_pricek = –0.10. Это отражает конкурентное давление в массовом сегменте — ЗПУ снижает цену, чтобы удерживать позиции в категориях с активной конкуренцией.
+		
+	\end{itemize}	
+\end{frame}
+
+\begin{frame}[plain]
+	\frametitle{Бейзлайн (OLS): результаты}
+	
+	\begin{block}{Уравнение линейной регрессии}
+		\[
+		\widehat{Y} = \beta_0 + 
+		\beta_1 \cdot \text{В} + 
+		\beta_2 \cdot \text{С} + 
+		\beta_3 \cdot \text{Кол} + 
+		\beta_4 \cdot \text{Курс} + \varepsilon
+		\]
+	\end{block}
+	
+	\begin{itemize}
+		\item R²\textsubscript{train}: 0.84; \quad R²\textsubscript{test}: 0.87
+		\item  \textbf{Durbin–Wu–Hausman}: $p < 0.05$ →  не принимаем $H_0$  → переменные эндогенны → нужна IV-регрессия
+		\item \textbf{Breusch–Pagan}: $p < 0.05$ → не принимаем  $H_0$ → присутствует гетероскедастичность → нужны робастные ошибки (HC3)
+		\item \textbf{Основные значимые факторы}: Цена по FOB в долларах: 0.64, Цена\_pricek: 0.23,   Вес штука\_pricezpu: 0.18,  Количество\_pricezpu: 0.05
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}[plain]
+	\frametitle{OLS: факт vs предикт}
+	\begin{figure}
+		\includegraphics[width=\linewidth]{OLS факт vs предикт}
+	\end{figure}
+\end{frame}
+
+\begin{frame}[plain]
+	\frametitle{Модели}
+	
+	\begin{block}{Описание}
+		Для сравнения с бейзлайном были опробованы следующие модели:
+		\begin{itemize}
+			\item \textbf{Ансамбли}: Bagging, Gradient Boosting;
+			\item \textbf{Нейросеть (MLP)};
+			\item Цель — улучшить точность прогнозирования относительно OLS.
+		\end{itemize}
+	\end{block}
+	
+\end{frame}
+
+\section{Результаты}
+
+\begin{frame}[plain]
+	\frametitle{Расширенные модели: OLS, Bagging, Boosting, NN}
+	\begin{figure}
+		\includegraphics[width=\linewidth]{output(2)}
+	\end{figure}
+	\begin{itemize}
+		\item \textbf{Характеристики целевой переменной:}
+	     mean = 1384.73, 25-й перцентиль= 128.00, 50-й перцентиль = 470.00, 75-й перцентиль = 1900.00
+
+	\end{itemize}	
+\end{frame}
+
+\begin{frame}[plain]
+	\frametitle{Random Forest: факт vs предикт}
+	\begin{figure}
+		\includegraphics[width=\linewidth]{Random Forest факт vs предикт}
+	\end{figure}
+\end{frame}
+
+\begin{frame}[plain]
+	\frametitle{Вывод}
+	\begin{itemize}
+		\item На формирование цены влияют Цена по FOB в долларах, Цена\_pricek, Вес штука\_pricezpu, Количество\_pricezpu
+		\item Для проведения пилота по набору метрик лучший результат показала модель Random Forest. 
+	\end{itemize}	
+\end{frame}
+
+\section{Дальнейшее развитие проекта}
+
+\begin{frame}[plain]
+		\frametitle{Планы}
+	\begin{figure}
+		\includegraphics[width=\linewidth]{Итог}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\centering
+	{\huge \color{blue} Спасибо за внимание!}
+\end{frame}
+
+\end{document}
